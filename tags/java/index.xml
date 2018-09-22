@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Java on </title>
+    <link>/tags/java/</link>
+    <description>Recent content in Java on </description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <managingEditor>nomikosi@thefuriousprogrammer.com (Iakovos Nomikos)</managingEditor>
+    <webMaster>nomikosi@thefuriousprogrammer.com (Iakovos Nomikos)</webMaster>
+    <lastBuildDate>Sun, 07 Oct 2018 20:24:14 +0300</lastBuildDate>
+    
+	<atom:link href="/tags/java/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Java 10 &#43; var = L.F.E. </title>
+      <link>/post/java/java_10/var/</link>
+      <pubDate>Sun, 07 Oct 2018 20:24:14 +0300</pubDate>
+      <author>nomikosi@thefuriousprogrammer.com (Iakovos Nomikos)</author>
+      <guid>/post/java/java_10/var/</guid>
+      <description>New variable type named &amp;lsquo;var&amp;rsquo; in Java 10? Have we started turning into JavaScript anarchists? Has its very substance been polluted by Kotlin enthusiasts? Should we all worry by this new &amp;ldquo;feature&amp;rdquo; (are we sure its not a bug?) or could there be any benefits from using &amp;lsquo;var&amp;rsquo; variable in our code?
+Var is used for type inference in Java to help reduce the verbosity of the language. This means you are able to omit variables&amp;rsquo; type as it will be inferred by the compiler by looking at the right hand part of the assignment.</description>
+    </item>
+    
+    <item>
+      <title>JCrete 2018</title>
+      <link>/post/jcrete/jcrete_2018/</link>
+      <pubDate>Wed, 12 Sep 2018 20:24:14 +0300</pubDate>
+      <author>nomikosi@thefuriousprogrammer.com (Iakovos Nomikos)</author>
+      <guid>/post/jcrete/jcrete_2018/</guid>
+      <description>Last July I had the opportunity to make three of my life dreams come true. First was taking a hike to Verliga dragonlake in Pindos, Greece. The second was watching Justice live which happened during We Are Electric festival in Holland. The third and most relative to this blog was attending JCrete unconference.
+During my 4 year professional experience as a java developer, I have been to many conferences and meetings across Greece.</description>
+    </item>
+    
+  </channel>
+</rss>

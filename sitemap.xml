@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+  xmlns:xhtml="http://www.w3.org/1999/xhtml">
+  
+  <url>
+    <loc>/post/java/java_10/var/</loc>
+    <lastmod>2018-10-07T20:24:14+03:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/post/books/dont_make_me_think/</loc>
+    <lastmod>2018-09-22T20:24:14+03:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/post/jcrete/jcrete_2018/</loc>
+    <lastmod>2018-09-12T20:24:14+03:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/</loc>
+    <lastmod>2018-10-07T20:24:14+03:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>/about/</loc>
+  </url>
+  
+  <url>
+    <loc>/tags/bookreview/</loc>
+    <lastmod>2018-09-22T20:24:14+03:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>/categories/</loc>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>/tags/java/</loc>
+    <lastmod>2018-10-07T20:24:14+03:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>/tags/jcrete/</loc>
+    <lastmod>2018-09-12T20:24:14+03:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>/post/</loc>
+    <lastmod>2018-10-07T20:24:14+03:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>/tags/</loc>
+    <lastmod>2018-09-22T20:24:14+03:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>/tags/ui/</loc>
+    <lastmod>2018-09-22T20:24:14+03:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+</urlset>
