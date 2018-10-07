@@ -112,9 +112,9 @@
   <div class="row">
     <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
       <article role="main" class="blog-post">
-          <p>New variable type named &lsquo;var&rsquo; in <code>Java 10</code>? Have we started turning into JavaScript anarchists? Has its very substance been polluted by Kotlin enthusiasts? Should we all worry by this new &ldquo;feature&rdquo; (are we sure its not a bug?) or could there be any benefits from using &lsquo;var&rsquo; variable in our code?</p>
+          <p>New variable type named &lsquo;var&rsquo; in <code>Java 10</code>? Have we started turning into JavaScript anarchists? Has its very substance been polluted by Kotlin enthusiasts? Should we all worry by this new &ldquo;feature&rdquo; (are we sure its not a bug?) or could there be any benefits from using &lsquo;var&rsquo; in our code?</p>
 
-<p>Var is used for type inference in Java to help reduce the verbosity of the language. This means you are able to omit variables&rsquo; type as it will be inferred by the compiler by looking at the right hand part of the assignment. You might think that var is a reserved keyword but that&rsquo;s not the case since doing so would break backwards compatibility, instead it is a reserved type named just like int, long, double etc. . To make things a bit clearer checkout the following example:</p>
+<p>Var is used for type inference in Java and helps reduce the verbosity of the language. This means you are able to omit variables&rsquo; type, as it will be inferred by the compiler by looking at the right hand part of the assignment. To make things a bit clearer checkout the following example:</p>
 
 <pre><code>Since Java 10 the following declaration
 
@@ -125,7 +125,9 @@ is the same as:
 var firstName = &quot;Iakovos&quot;;
 </code></pre>
 
-<p>Compiler detects that the value on the right is of type String and knows that this will be the type of var as well. Meaning firstName is instanceof String.</p>
+<p>Compiler detects that the value on the right is of type String and without explicitly making the declaration, it infers the &lsquo;firstName&rsquo; type. Meaning firstName is instanceof String.</p>
+
+<p>You might think that var is a reserved keyword but that&rsquo;s not the case since doing so would break backwards compatibility, instead it is a reserved type name just like int, long, double etc. .</p>
 
 <p>Type inference is not new, since it was first introduced with <code>Java 7</code></p>
 
@@ -223,7 +225,7 @@ public static int var(){
 </code></pre>
 
 <ul>
-<li>You can declare a variable with named var</li>
+<li>You can declare a variable with name var</li>
 </ul>
 
 <pre><code> String var = &quot;2&quot;;

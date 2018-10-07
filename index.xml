@@ -19,8 +19,8 @@
       <pubDate>Sun, 07 Oct 2018 20:24:14 +0300</pubDate>
       <author>nomikosi@thefuriousprogrammer.com (Iakovos Nomikos)</author>
       <guid>/post/java/java_10/var/</guid>
-      <description>New variable type named &amp;lsquo;var&amp;rsquo; in Java 10? Have we started turning into JavaScript anarchists? Has its very substance been polluted by Kotlin enthusiasts? Should we all worry by this new &amp;ldquo;feature&amp;rdquo; (are we sure its not a bug?) or could there be any benefits from using &amp;lsquo;var&amp;rsquo; variable in our code?
-Var is used for type inference in Java to help reduce the verbosity of the language. This means you are able to omit variables&amp;rsquo; type as it will be inferred by the compiler by looking at the right hand part of the assignment.</description>
+      <description>New variable type named &amp;lsquo;var&amp;rsquo; in Java 10? Have we started turning into JavaScript anarchists? Has its very substance been polluted by Kotlin enthusiasts? Should we all worry by this new &amp;ldquo;feature&amp;rdquo; (are we sure its not a bug?) or could there be any benefits from using &amp;lsquo;var&amp;rsquo; in our code?
+Var is used for type inference in Java and helps reduce the verbosity of the language. This means you are able to omit variables&amp;rsquo; type, as it will be inferred by the compiler by looking at the right hand part of the assignment.</description>
     </item>
     
     <item>
