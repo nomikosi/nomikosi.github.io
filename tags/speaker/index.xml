@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Speaker on </title>
+    <link>/tags/speaker/</link>
+    <description>Recent content in Speaker on </description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <managingEditor>nomikosi@thefuriousprogrammer.com (Iakovos Nomikos)</managingEditor>
+    <webMaster>nomikosi@thefuriousprogrammer.com (Iakovos Nomikos)</webMaster>
+    <lastBuildDate>Fri, 26 Oct 2018 22:24:14 +0300</lastBuildDate>
+    
+	<atom:link href="/tags/speaker/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Tips for first time presenters</title>
+      <link>/post/other/tips_for_first_time_presenters/</link>
+      <pubDate>Fri, 26 Oct 2018 22:24:14 +0300</pubDate>
+      <author>nomikosi@thefuriousprogrammer.com (Iakovos Nomikos)</author>
+      <guid>/post/other/tips_for_first_time_presenters/</guid>
+      <description>Well last week, I had the pleasure and honor to present in a conference for the first time. It was GeeCon Prague and more details about my talk can be found here. Following, you can find my tips for those who want to start presenting but don&amp;rsquo;t have any prior experience.
+ Number one and most important have a story to share about something you love doing or something that helped you solve problems.</description>
+    </item>
+    
+    <item>
+      <title>My talk at GeeCon Prague 2018</title>
+      <link>/post/geecon/geecon_prague_2018/</link>
+      <pubDate>Fri, 26 Oct 2018 20:24:14 +0300</pubDate>
+      <author>nomikosi@thefuriousprogrammer.com (Iakovos Nomikos)</author>
+      <guid>/post/geecon/geecon_prague_2018/</guid>
+      <description>Last Thursday on October 18th, I had the pleasure and excitement to present for the first time in a conference! It was GeeCon Prague and the organization plus the quality of the talks was really good, I highly recommend it to everyone! Something that I found to be really productive was that most speakers had a practical approach to their presentations, meaning a lot of code snippets and discussion with the crowd was there.</description>
+    </item>
+    
+  </channel>
+</rss>

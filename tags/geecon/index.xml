@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Geecon on </title>
+    <link>/tags/geecon/</link>
+    <description>Recent content in Geecon on </description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <managingEditor>nomikosi@thefuriousprogrammer.com (Iakovos Nomikos)</managingEditor>
+    <webMaster>nomikosi@thefuriousprogrammer.com (Iakovos Nomikos)</webMaster>
+    <lastBuildDate>Fri, 26 Oct 2018 20:24:14 +0300</lastBuildDate>
+    
+	<atom:link href="/tags/geecon/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>My talk at GeeCon Prague 2018</title>
+      <link>/post/geecon/geecon_prague_2018/</link>
+      <pubDate>Fri, 26 Oct 2018 20:24:14 +0300</pubDate>
+      <author>nomikosi@thefuriousprogrammer.com (Iakovos Nomikos)</author>
+      <guid>/post/geecon/geecon_prague_2018/</guid>
+      <description>Last Thursday on October 18th, I had the pleasure and excitement to present for the first time in a conference! It was GeeCon Prague and the organization plus the quality of the talks was really good, I highly recommend it to everyone! Something that I found to be really productive was that most speakers had a practical approach to their presentations, meaning a lot of code snippets and discussion with the crowd was there.</description>
+    </item>
+    
+  </channel>
+</rss>

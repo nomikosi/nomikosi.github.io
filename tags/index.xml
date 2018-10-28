@@ -23,6 +23,24 @@
     </item>
     
     <item>
+      <title>Conference</title>
+      <link>/tags/conference/</link>
+      <pubDate>Fri, 26 Oct 2018 22:24:14 +0300</pubDate>
+      <author>nomikosi@thefuriousprogrammer.com (Iakovos Nomikos)</author>
+      <guid>/tags/conference/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Geecon</title>
+      <link>/tags/geecon/</link>
+      <pubDate>Fri, 26 Oct 2018 20:24:14 +0300</pubDate>
+      <author>nomikosi@thefuriousprogrammer.com (Iakovos Nomikos)</author>
+      <guid>/tags/geecon/</guid>
+      <description></description>
+    </item>
+    
+    <item>
       <title>Java</title>
       <link>/tags/java/</link>
       <pubDate>Sun, 07 Oct 2018 20:24:14 +0300</pubDate>
@@ -37,6 +55,15 @@
       <pubDate>Wed, 12 Sep 2018 20:24:14 +0300</pubDate>
       <author>nomikosi@thefuriousprogrammer.com (Iakovos Nomikos)</author>
       <guid>/tags/jcrete/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Speaker</title>
+      <link>/tags/speaker/</link>
+      <pubDate>Fri, 26 Oct 2018 22:24:14 +0300</pubDate>
+      <author>nomikosi@thefuriousprogrammer.com (Iakovos Nomikos)</author>
+      <guid>/tags/speaker/</guid>
       <description></description>
     </item>
     

@@ -3,6 +3,16 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
+    <loc>/post/other/tips_for_first_time_presenters/</loc>
+    <lastmod>2018-10-26T22:24:14+03:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/post/geecon/geecon_prague_2018/</loc>
+    <lastmod>2018-10-26T20:24:14+03:00</lastmod>
+  </url>
+  
+  <url>
     <loc>/post/java/java_10/var/</loc>
     <lastmod>2018-10-07T20:24:14+03:00</lastmod>
   </url>
@@ -19,7 +29,7 @@
   
   <url>
     <loc>/</loc>
-    <lastmod>2018-10-07T20:24:14+03:00</lastmod>
+    <lastmod>2018-10-26T22:24:14+03:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -39,6 +49,18 @@
   </url>
   
   <url>
+    <loc>/tags/conference/</loc>
+    <lastmod>2018-10-26T22:24:14+03:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>/tags/geecon/</loc>
+    <lastmod>2018-10-26T20:24:14+03:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
     <loc>/tags/java/</loc>
     <lastmod>2018-10-07T20:24:14+03:00</lastmod>
     <priority>0</priority>
@@ -52,7 +74,13 @@
   
   <url>
     <loc>/post/</loc>
-    <lastmod>2018-10-07T20:24:14+03:00</lastmod>
+    <lastmod>2018-10-26T22:24:14+03:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>/tags/speaker/</loc>
+    <lastmod>2018-10-26T22:24:14+03:00</lastmod>
     <priority>0</priority>
   </url>
   
