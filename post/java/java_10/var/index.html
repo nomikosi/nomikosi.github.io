@@ -164,8 +164,8 @@ Predicate&lt;String&gt; authorList = authors -&gt; authors.contains(&quot;Iakovo
 <pre><code> var firstName = null
 </code></pre>
 
-<p>The simple rule is that the compiler should know what type of variable is gonna deal with from that point on and for this to happen, it looks at the value on the right to get some clues.
-In the example above someone would argue the case of assigning to firstName the type Object, but that would be too vague and without a point as everything derives from Object, var included. Also that would mean that java is not a <a href="https://stackoverflow.com/questions/1517582/what-is-the-difference-between-statically-typed-and-dynamically-typed-languages" target="_blank">statically typed</a> language anymore.</p>
+<p>A simple rule to remember, is that the compiler should be able to infer the variable type when it is declared. For this to happen, it looks at the value on the right to get some clues.
+In the example above someone would argue the case of assigning type Object to firstName, but that would be too vague and without a point as everything derives from Object type, var included. Also that would mean that java is not a <a href="https://stackoverflow.com/questions/1517582/what-is-the-difference-between-statically-typed-and-dynamically-typed-languages" target="_blank">statically typed</a> language anymore.</p>
 
 <ul>
 <li>OK, so how will this piece of code actually help us?</li>
@@ -208,6 +208,23 @@ Upon initialization var has type String and that cannot change later in the code
 
 <p>Well if you run decompiler ex. <code>javap -c main.class</code>  for your classes you will see that the generated types don&rsquo;t include var but the infer types instead.</p>
 
+<ul>
+<li>Can you declare an array of type var?</li>
+</ul>
+
+<p>Nope doing so won&rsquo;t work. Trying it out on IntelliJ IDEA, I received the following error: <code>Array initializer is not allowed here</code></p>
+
+<pre><code>//won't work!
+var t = {1,2};
+</code></pre>
+
+<ul>
+<li>When you assign an arithmetic value to a variable of type var, how will it be autoboxed?</li>
+</ul>
+
+<p>Good question, let see what happens. If you have a small value lets say 1, var will be of type int not short.
+Now, if you try something like <code>var a = Integer.MAX_VALUE + 15;</code> variable &lsquo;a&rsquo; won&rsquo;t be autoboxed to long, but will be of type int instead and <code>an overflow will occur</code>. Meaning &lsquo;a&rsquo; will have a value of -2147483634</p>
+
 <p>Playing around a bit with Intellij I found the following:</p>
 
 <ul>
@@ -235,8 +252,7 @@ public static int var(){
 <li>You can declare a package named var //for the love of God don&rsquo;t..</li>
 </ul>
 
-<p>If you want o see the var feature in more depth, please check out <a href="https://developer.oracle.com/java/jdk-10-local-variable-type-inference" target="_blank">this article from Oracle</a>. Apart from being very educational there is a
-great section on how to use &ldquo;Type Inference with Non-Denotable Types&rdquo;.</p>
+<p>If you want o see the var feature in more depth, please check out <a href="https://developer.oracle.com/java/jdk-10-local-variable-type-inference" target="_blank">this article from Oracle</a>. Apart from being very educational there is a great section on how to use &ldquo;Type Inference with Non-Denotable Types&rdquo;.</p>
 
       </article>
 

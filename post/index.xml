@@ -8,10 +8,19 @@
     <language>en-us</language>
     <managingEditor>nomikosi@thefuriousprogrammer.com (Iakovos Nomikos)</managingEditor>
     <webMaster>nomikosi@thefuriousprogrammer.com (Iakovos Nomikos)</webMaster>
-    <lastBuildDate>Fri, 26 Oct 2018 22:24:14 +0300</lastBuildDate>
+    <lastBuildDate>Tue, 13 Nov 2018 20:24:14 +0300</lastBuildDate>
     
 	<atom:link href="/post/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>JShell</title>
+      <link>/post/java/java_9/jshell/</link>
+      <pubDate>Tue, 13 Nov 2018 20:24:14 +0300</pubDate>
+      <author>nomikosi@thefuriousprogrammer.com (Iakovos Nomikos)</author>
+      <guid>/post/java/java_9/jshell/</guid>
+      <description>For those who haven&amp;rsquo;t heard the news, Java has officially its own shell, named (obviously) JShell since Java 9. It is a REPL type of environment where you type your code in the command line interface and see the results immediately on your screen. This is a good way to test simple programming concepts and ideas without the inherited boilerplate verbosity, which JUnit or main function has. Also semicolons in the end are optional!</description>
+    </item>
     
     <item>
       <title>Tips for first time presenters</title>
