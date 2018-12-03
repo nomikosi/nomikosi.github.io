@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Hugo on </title>
+    <link>/tags/hugo/</link>
+    <description>Recent content in Hugo on </description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <managingEditor>nomikosi@thefuriousprogrammer.com (Iakovos Nomikos)</managingEditor>
+    <webMaster>nomikosi@thefuriousprogrammer.com (Iakovos Nomikos)</webMaster>
+    <lastBuildDate>Sun, 02 Dec 2018 12:24:14 +0300</lastBuildDate>
+    
+	<atom:link href="/tags/hugo/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>HUGO static site generator</title>
+      <link>/post/other/hugo/</link>
+      <pubDate>Sun, 02 Dec 2018 12:24:14 +0300</pubDate>
+      <author>nomikosi@thefuriousprogrammer.com (Iakovos Nomikos)</author>
+      <guid>/post/other/hugo/</guid>
+      <description>I guess some of you have heard about HUGO and how it is a great tool for building static websites. Personally I have used it for creating this blog and also for my father&amp;rsquo;s company website ptaino.com. I don&amp;rsquo;t have any prior experience with other static generation tools so I am not in a position to compare it to other solutions like Jekyll. What I can share with you though is my personal experience after using it, why I love it and tips to get started.</description>
+    </item>
+    
+  </channel>
+</rss>
