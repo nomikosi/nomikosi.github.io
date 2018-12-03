@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+
+  <title>HUGO static site generator</title>
+  
+  <meta name="author" content="Iakovos Nomikos"/>
+  <meta name="generator" content="Hugo 0.40.1" />
+  <link href='/img/favicon.ico' rel='icon' type='image/x-icon'/>
+
+  <link rel="alternate" href="/index.xml" type="application/rss+xml" title="">
+
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css" />
+  <link rel="stylesheet" href="/css/bootstrap.css" />
+  <link rel="stylesheet" href="/css/main.css" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Fira+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800" />
+
+  
+  <meta property="og:title" content="HUGO static site generator" />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="/post/other/hugo/" />
+  <meta property="og:image" content="/img/fury_logo.png" />
+  
+</head>
+
+
+  <body>
+
+    <nav class="navbar navbar-default navbar-fixed-top navbar-custom">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#main-navbar">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href=""></a>
+    </div>
+
+    <div class="collapse navbar-collapse" id="main-navbar">
+      <ul class="nav navbar-nav navbar-right">
+      
+        
+          <li>
+          <a title="Home" href="/">Home</a>
+  	      </li>
+  	    
+      
+        
+          <li>
+          <a title="About" href="/about/">About</a>
+  	      </li>
+  	    
+      
+      </ul>
+    </div>
+    <div class="avatar-container">
+      <div class="avatar-img-border">
+        
+            <a title="" href="">
+                <img class="avatar-img" src="/img/fury_logo.png" alt="" />
+            </a>
+        
+    </div>
+    	</div>
+	
+
+  </div>
+</nav>
+
+
+    <div role="main" class="container main-content">
+
+      
+
+
+
+  
+
+  <header class="header-section ">
+  
+  <div class="intro-header no-img">
+    <div class="container">
+  <div class="row">
+    <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+      <div class="post-heading">
+        <h1>HUGO static site generator</h1>
+        
+
+        
+        <span class="post-meta">Posted on December 2, 2018 | Written by Iakovos Nomikos | Tags:  <a href="/tags/hugo" title="hugo">
+                hugo&nbsp; </a>  <a href="/tags/web" title="web">
+                web&nbsp; </a> 
+
+        </span>
+        
+      </div>
+    </div>
+  </div>
+</div>
+
+  </div>
+  </header>
+
+
+      
+        <div class="container">
+  <div class="row">
+    <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+      <article role="main" class="blog-post">
+          <p>I guess some of you have heard about HUGO and how it is a great tool for building static websites. Personally I have used it for creating this blog and also for my father&rsquo;s company website <a href="https://www.ptaino.com" target="_blank">ptaino.com</a>. I don&rsquo;t have any prior experience with other static generation tools so I am not in a position to compare it to other solutions like Jekyll. What I can share with you though is my personal experience after using it, why I love it and tips to get started.</p>
+
+<h3>HUGO?</h3>
+
+<p>HUGO is an <a href="https://github.com/gohugoio/hugo" target="_blank">open source</a> static site generator written in Go and is a proper choice for people who want to create their personal blog, a portfolio site, company sites etc. . It uses Go&rsquo;s <a href="https://golang.org/pkg/html/template/" target="_blank">package template</a> standard library.</p>
+
+<h3>What are static sites?</h3>
+
+<p>In static websites all content (HTML,CSS, JS) is pre-build and stored on the server. Instead of dynamically producing content, server&rsquo;s only responsibility is to send a file, which makes the whole process quite fast. All JS that comes with the web page will run exclusively on the client and no content rendering is done server side.</p>
+
+<h3>What is a static site generator?</h3>
+
+<p>The main ingredient of static site generators are templates which act as the base in which you place your content. When those two get rendered, the result is static pages.</p>
+
+<h3>Why should I use it?</h3>
+
+<ul>
+<li><p>One of the amazing features of Hugo is its blazing fast build times, since it can generate a simple one page site in a matter of milliseconds
+and that makes it a great tool for blogs like this one. You can watch
+<a href="https://www.youtube.com/watch?v=CdiDYZ51a2o" target="_blank">this</a> benchmark video showing how HUGO can generate 5000 static pages within 6 seconds :-) .</p></li>
+
+<li><p>Also another great feature to consider is that all changes you make are almost instantly displayed on your running localhost server, so you can edit things on the spot (live reload feature).</p></li>
+
+<li><p>Finally the installation process is quite easy and the learning curve is quite small.</p></li>
+</ul>
+
+<h3>OK where do I start?</h3>
+
+<p>To install hugo, follow these steps <a href="https://gohugo.io/getting-started/installing/" target="_blank">here</a>. Also the detailed documentation can be found <a href="https://gohugo.io/documentation/" target="_blank">here</a>.
+A great tutorial to guide you through HUGO&rsquo;s basics is <a href="https://www.youtube.com/watch?v=qtIqKaDlqXo&amp;list=PLLAZ4kZ9dFpOnyRlyS-liKL5ReHDcj4G3" target="_blank">this one</a> and <a href="https://gohugo.io/getting-started/" target="_blank">this</a> is the official get started guide. If you want to use a custom theme for your site (which is the most reasonable thing to do), there is a plethora to choose from which can be found <a href="https://themes.gohugo.io/" target="_blank">here</a>.</p>
+
+<h3>Starting the server</h3>
+
+<p>To run hugo type in your console <code>hugo server -D -t theme_name</code>. The parameter <code>-D</code> is optional and is needed only if you have created .md files or draft content.
+Also <code>-t theme_name</code> is used for loading your theme.</p>
+
+<h3>Generating the content</h3>
+
+<p>Run <code>hugo -D -t theme_name</code> to generate static content from your HUGO code. All the generated files are located in your <code>public</code> folder.
+Now, <u>a tedious work you must always be prepared to do</u> is deleting the contents of your <code>public</code> folder before generating a new version of your static page.
+The reason is that something might be left from previous builds and thus affect your final result.</p>
+
+<h3>My approach</h3>
+
+<p>Now all of the above sound and are great, so I will share you my personal recommendation on how to approach HUGO if you want to build you own static website
+fast and with exploratory attitude. If you need additional help, just search the references above.</p>
+
+<p>1) Important step but not mandatory, is to go through the tutorial. In my opinion you don&rsquo;t need to watch all 23 chapters, just pay attention to directory structure, how markdown .md files work and how config.toml works.</p>
+
+<p>2) Download an existing template and start playing around. Compare the template&rsquo;s demo page with the repository code and with your code as well and see how your changes affect
+the final result.</p>
+
+<h3>How customizable can it be?</h3>
+
+<p>Well my answer is that I don&rsquo;t know what you have in mind but yes, it is quite customizable. For my blog I added tags on every post, for categorization, navigation and searchability. Some coding was necessary but not that time was needed to short thing out. Also for <a href="https://www.ptaino.com" target="_blank">ptaino.com</a> I added a google map iframe which is nicely
+displayed. So yes you can add staff but it mostly depends on what you have in mind. The two themes I used are <a href="https://themes.gohugo.io/hugo-stellar-theme/" target="_blank">Stellar</a> and <a href="https://themes.gohugo.io/retrofulhugo/" target="_blank">retroful</a>.</p>
+
+<h3>Difficulties I faced with HUGO</h3>
+
+<ul>
+<li><p>The biggest problem I faced after completing my two static websites, was that CSS wouldn&rsquo;t load when hosting them on <a href="https://pages.github.com/" target="_blank">GitHub pages</a>. For <code>thefuriousprogrammer.com</code>, there was a global setting in my template which I hadn&rsquo;t setup properly and thus the CSS file path was not valid. All the formatting displayed perfectly on localhost though, so I couldn&rsquo;t notice that earlier. For <code>ptaino.com</code> there was a problem with <a href="https://help.github.com/articles/securing-your-github-pages-site-with-https/" target="_blank">mixed content</a> where some .js and .css
+references where is plain <code>http://</code> and not <code>https://</code>.</p></li>
+
+<li><p>Also another issues was &lsquo;markdownify&rsquo; parameter on my template which caused some build issues. Well I just deleted it problem solved :-)</p></li>
+</ul>
+
+      </article>
+
+      <ul class="pager blog-pager">
+        
+        <li class="previous">
+          <a href="/post/java/java_9/jshell/" data-toggle="tooltip" data-placement="top" title="JShell">&larr; Previous Post</a>
+        </li>
+        
+        
+      </ul>
+
+      
+
+    </div>
+  </div>
+</div>
+
+      
+
+    </div>
+
+    <footer>
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+        <ul class="list-inline text-center footer-links">
+          
+          
+          <li>
+            <a href="https://github.com/nomikosi" title="GitHub">
+              <span class="fa-stack fa-lg">
+                <i class="fa fa-circle fa-stack-2x"></i>
+                <i class="fa fa-github fa-stack-1x fa-inverse"></i>
+              </span>
+            </a>
+          </li>
+          
+		      
+          <li>
+            <a href="https://twitter.com/nomikosi" title="Twitter">
+              <span class="fa-stack fa-lg">
+                <i class="fa fa-circle fa-stack-2x"></i>
+                <i class="fa fa-twitter fa-stack-1x fa-inverse"></i>
+              </span>
+            </a>
+          </li>
+          
+		      
+          <li>
+            <a href="mailto:nomikosi@thefuriousprogrammer.com" title="Email me">
+              <span class="fa-stack fa-lg">
+                <i class="fa fa-circle fa-stack-2x"></i>
+                <i class="fa fa-envelope fa-stack-1x fa-inverse"></i>
+              </span>
+            </a>
+          </li>
+          
+		      
+          <li>
+            <a href="https://linkedin.com/in/nomikosi/" title="LinkedIn">
+              <span class="fa-stack fa-lg">
+                <i class="fa fa-circle fa-stack-2x"></i>
+                <i class="fa fa-linkedin fa-stack-1x fa-inverse"></i>
+              </span>
+            </a>
+          </li>
+          
+	    	  
+          
+          
+
+    		  <li>
+      			<a href="index.xml" title="RSS">
+      			  <span class="fa-stack fa-lg">
+        				<i class="fa fa-circle fa-stack-2x"></i>
+        				<i class="fa fa-rss fa-stack-1x fa-inverse"></i>
+      			  </span>
+      			</a>
+    		  </li>		
+
+        </ul>
+        <p class="credits copyright text-muted">
+    	  <a href="">Iakovos Nomikos</a> 2018 | <a href="http://gohugo.io">Hugo</a> fueled
+    		  
+    	  
+  	    </p>
+  	    
+    	<p class="credits theme-by text-muted">
+			<a href="https://github.com/5ARMALE/retrofulhugo">Retroful Hugo</a> theme based on <a href="https://github.com/1138-4EB/beautifulhugo">Beautiful Hugo</a>.
+          
+    	</p>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script src="/js/jquery-1.11.2.min.js"></script>
+<script src="/js/bootstrap.min.js"></script>
+<script src="/js/main.js"></script>
+
+
+<script>
+(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'UA-125015105-1', 'auto');
+ga('send', 'pageview');
+</script>
+
+
+
+  </body>
+</html>
