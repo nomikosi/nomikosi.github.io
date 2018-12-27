@@ -8,10 +8,28 @@
     <language>en-us</language>
     <managingEditor>nomikosi@thefuriousprogrammer.com (Iakovos Nomikos)</managingEditor>
     <webMaster>nomikosi@thefuriousprogrammer.com (Iakovos Nomikos)</webMaster>
-    <lastBuildDate>Sat, 22 Sep 2018 20:24:14 +0300</lastBuildDate>
+    <lastBuildDate>Tue, 25 Dec 2018 19:24:14 +0300</lastBuildDate>
     
 	<atom:link href="/tags/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Architecture</title>
+      <link>/tags/architecture/</link>
+      <pubDate>Tue, 25 Dec 2018 19:24:14 +0300</pubDate>
+      <author>nomikosi@thefuriousprogrammer.com (Iakovos Nomikos)</author>
+      <guid>/tags/architecture/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Back End</title>
+      <link>/tags/back-end/</link>
+      <pubDate>Tue, 25 Dec 2018 19:24:14 +0300</pubDate>
+      <author>nomikosi@thefuriousprogrammer.com (Iakovos Nomikos)</author>
+      <guid>/tags/back-end/</guid>
+      <description></description>
+    </item>
     
     <item>
       <title>Bookreview</title>
@@ -82,6 +100,15 @@
       <pubDate>Sat, 22 Sep 2018 20:24:14 +0300</pubDate>
       <author>nomikosi@thefuriousprogrammer.com (Iakovos Nomikos)</author>
       <guid>/tags/ui/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Under the Hood</title>
+      <link>/tags/under-the-hood/</link>
+      <pubDate>Tue, 25 Dec 2018 19:24:14 +0300</pubDate>
+      <author>nomikosi@thefuriousprogrammer.com (Iakovos Nomikos)</author>
+      <guid>/tags/under-the-hood/</guid>
       <description></description>
     </item>
     

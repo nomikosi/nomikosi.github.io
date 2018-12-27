@@ -8,10 +8,19 @@
     <language>en-us</language>
     <managingEditor>nomikosi@thefuriousprogrammer.com (Iakovos Nomikos)</managingEditor>
     <webMaster>nomikosi@thefuriousprogrammer.com (Iakovos Nomikos)</webMaster>
-    <lastBuildDate>Sun, 02 Dec 2018 12:24:14 +0300</lastBuildDate>
+    <lastBuildDate>Tue, 25 Dec 2018 19:24:14 +0300</lastBuildDate>
     
 	<atom:link href="/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>HTTP load balancing</title>
+      <link>/post/other/loadbalancers/</link>
+      <pubDate>Tue, 25 Dec 2018 19:24:14 +0300</pubDate>
+      <author>nomikosi@thefuriousprogrammer.com (Iakovos Nomikos)</author>
+      <guid>/post/other/loadbalancers/</guid>
+      <description>When you hear the term load balancing, this can refer to many different things such as routers, TCP, UDP or http requests. Today we gonna discuss about the latter. Load balancing for http requests is the process of forwarding traffic as evenly as possible among instances of your server pool. Have in mind that your machines may vary in size, load or geographic region even so that&amp;rsquo;s not an easy task!</description>
+    </item>
     
     <item>
       <title>HUGO static site generator</title>
