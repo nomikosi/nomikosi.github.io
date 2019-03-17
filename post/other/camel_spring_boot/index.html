@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+
+  <title>Apache camel</title>
+  
+  <meta name="author" content="Iakovos Nomikos"/>
+  <meta name="generator" content="Hugo 0.40.1" />
+  <link href='/img/favicon.ico' rel='icon' type='image/x-icon'/>
+
+  <link rel="alternate" href="/index.xml" type="application/rss+xml" title="">
+
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css" />
+  <link rel="stylesheet" href="/css/bootstrap.css" />
+  <link rel="stylesheet" href="/css/main.css" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Fira+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800" />
+
+  
+  <meta property="og:title" content="Apache camel" />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="/post/other/camel_spring_boot/" />
+  <meta property="og:image" content="/img/fury_logo.png" />
+  
+</head>
+
+
+  <body>
+
+    <nav class="navbar navbar-default navbar-fixed-top navbar-custom">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#main-navbar">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href=""></a>
+    </div>
+
+    <div class="collapse navbar-collapse" id="main-navbar">
+      <ul class="nav navbar-nav navbar-right">
+      
+        
+          <li>
+          <a title="Home" href="/">Home</a>
+  	      </li>
+  	    
+      
+        
+          <li>
+          <a title="About" href="/about/">About</a>
+  	      </li>
+  	    
+      
+      </ul>
+    </div>
+    <div class="avatar-container">
+      <div class="avatar-img-border">
+        
+            <a title="" href="">
+                <img class="avatar-img" src="/img/fury_logo.png" alt="" />
+            </a>
+        
+    </div>
+    	</div>
+	
+
+  </div>
+</nav>
+
+
+    <div role="main" class="container main-content">
+
+      
+
+
+
+  
+
+  <header class="header-section ">
+  
+  <div class="intro-header no-img">
+    <div class="container">
+  <div class="row">
+    <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+      <div class="post-heading">
+        <h1>Apache camel</h1>
+        
+
+        
+        <span class="post-meta">Posted on March 16, 2019 | Written by Iakovos Nomikos | Tags:  <a href="/tags/camel" title="camel">
+                camel&nbsp; </a>  <a href="/tags/open-source" title="open source">
+                open source&nbsp; </a>  <a href="/tags/library" title="library">
+                library&nbsp; </a>  <a href="/tags/java" title="java">
+                java&nbsp; </a> 
+
+        </span>
+        
+      </div>
+    </div>
+  </div>
+</div>
+
+  </div>
+  </header>
+
+
+      
+        <div class="container">
+  <div class="row">
+    <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+      <article role="main" class="blog-post">
+          <p>Recently I had the opportunity to play with <a href="http://camel.apache.org/" target="_blank">Apache Camel</a> and Spring Boot. I found the result quite entertaining! If you haven&rsquo;t heard the name before, it is an open source routing tool which can receive messages, process them and send them to other destinations. In my case, I was reading payment messages from one topic, storing them in a db and then scheduled request with a POST call to another server.</p>
+
+<p>Now, I could just start talking about all the different commands you can use, but I prefer to show you the project step by step. Some of the code is omitted such as Java Beans, JPA, Spring annotations, but what I do care about is to get the idea of how things work.</p>
+
+<ul>
+<li>First we read from a specific topic. </br></li>
+<li>Then we log and direct our call to another route where we will get our server token. This route is omitted for now</br></li>
+<li>With the use of .bean simply we call the specified bean&rsquo;s method, in that case getUnsentMessages</br></li>
+<li>Split command is used in cases where bean method <code>getUnsentMessages</code> returns a List of results and we only want to perform REST calls for each one individually.</br></li>
+<li>Directs the output.</li>
+</ul>
+
+<pre><code> from(props.getDispatchMessageScheduler())
+ 	    	.log(&quot;Retrieve unsent messages&quot;)
+	    	.to(&quot;direct:authService&quot;)
+	    	.bean(topicMessageHandler,&quot;getUnsentMessages&quot;)//injected bean
+	    	.split(body())
+	    	.to(&quot;direct:unsentTopics&quot;);
+</code></pre>
+
+<p>The code we just saw, will be the message generator for our consumer:</p>
+
+<p>1 Receive message from direct</br>
+2..6 Log and process the message. In those lines we start seeing some Java too. With the .getIn() command we receive the direct message and map it to our base class. On lines 5 we create a header element for later use.</br></p>
+
+<pre><code>1.    	from(&quot;direct:unsentTopics&quot;)
+2.    	.log(&quot;Dispatch topic&quot;)
+3.			.process(exchange -&gt; {
+4.				MyBaseClass baseClass = exchange.getIn().getBody(MyBaseClass.class);
+5.				exchange.getIn().setHeader(&quot;RECORD_ID&quot;, baseClass.getId());
+6.			  })
+</code></pre>
+
+<p>7..14 Here we set all the headers prior to our POST request.</br></p>
+
+<pre><code>7.			.setHeader(&quot;CamelHttpMethod&quot;)
+8.				.simple(&quot;POST&quot;)
+9.			.setHeader(&quot;Content-Type&quot;)
+10.				.simple(&quot;application/json;charset=UTF-8&quot;)
+11.			.setHeader(&quot;Accept&quot;)
+12.				.simple(&quot;application/json&quot;)
+13.			.setHeader(&quot;Authorization&quot;)
+14.				.simple(&quot;Bearer ${header.TOKEN}&quot;) 	
+</code></pre>
+
+<p>15..30 In those lines we try to determine the messages type and corresponding URL.</p>
+
+<pre><code>15.			.process(new Processor() {
+16.				@Override
+17.				public void process(final Exchange exchange) throws Exception {
+18.					 String uri=&quot;&quot;;
+19.					 MyBaseClass body =exchange.getIn().getBody(MyBaseClass.class);
+20.					   if(body.getMessage() == null)
+21.						 throw new RuntimeException(&quot;Empty body message&quot;);
+
+22.					if( body.getMessage().contains(FLOW_DESCRIMINATOR_DEPOSIT)) {
+23.						 uri = props.getDepositUrl(); }
+24.					
+25.			    	if(  body.getMessage().contains(FLOW_DESCRIMINATOR_LOAN)) {
+26.			    		uri =  props.getLoanUrl(); }
+
+27.			    	else {
+28.			    		throw new RuntimeException(&quot;Invalid message type:&quot; + body.getMessage());   	}
+
+29.					exchange.getIn().setHeader(&quot;URI&quot;, uri);
+30.					} })
+</code></pre>
+
+<p>31..45 In those lines we see two new commands .recipientList() and .choice(). The first one is most appropriately used in cases where you want to forward the same message to dynamically specify recipients. In our case we have only one. The .choice() is like an if/else command. When a specific condition is met do A otherwise do B. The scope of the command ends with .end()</p>
+
+<pre><code>31.			.setBody().simple(&quot;${body.message}&quot;)
+32.			.recipientList(header(URI&quot;))
+33.			.choice()
+34.			.when()
+          .simple(&quot;${header.CamelHttpResponseCode} == 200&quot;)
+35.					.process(exchange -&gt; {
+36.						Integer recordId = exchange.getIn().getHeader(&quot;RECORD_ID&quot;,Integer.class);
+37.						exchange.getIn().setBody(recordId);				})
+
+38.				.bean(topicMessageHandler,&quot;successfullyDispatched&quot;)
+39.				.log(&quot;Topic dispatch completed successfully&quot;)
+40.	        .otherwise()
+41.		                .process(exchange -&gt; {
+42.				        	MyErrorObject errorObj = createErrorObject(exchange);				        	
+43.							exchange.getIn().setBody(errorObj);	})
+44.		        .bean(topicMessageHandler,&quot;unsuccessfullyDispatched&quot;)
+45.      .end();
+</code></pre>
+
+<p>To sum it up, we managed to do a lot of stuff with little coding. It is a great tool for cases where you just want to route traffic. This was my first project so I am pretty sure there much optimization to be done, just wanted to show you the basics. One thing that I still haven&rsquo;t found though is how to test Camel applications properly.</p>
+
+      </article>
+
+      <ul class="pager blog-pager">
+        
+        <li class="previous">
+          <a href="/post/other/loadbalancers/" data-toggle="tooltip" data-placement="top" title="HTTP load balancing">&larr; Previous Post</a>
+        </li>
+        
+        
+      </ul>
+
+      
+
+    </div>
+  </div>
+</div>
+
+      
+
+    </div>
+
+    <footer>
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+        <ul class="list-inline text-center footer-links">
+          
+          
+          <li>
+            <a href="https://github.com/nomikosi" title="GitHub">
+              <span class="fa-stack fa-lg">
+                <i class="fa fa-circle fa-stack-2x"></i>
+                <i class="fa fa-github fa-stack-1x fa-inverse"></i>
+              </span>
+            </a>
+          </li>
+          
+		      
+          <li>
+            <a href="https://twitter.com/nomikosi" title="Twitter">
+              <span class="fa-stack fa-lg">
+                <i class="fa fa-circle fa-stack-2x"></i>
+                <i class="fa fa-twitter fa-stack-1x fa-inverse"></i>
+              </span>
+            </a>
+          </li>
+          
+		      
+          <li>
+            <a href="mailto:nomikosi@thefuriousprogrammer.com" title="Email me">
+              <span class="fa-stack fa-lg">
+                <i class="fa fa-circle fa-stack-2x"></i>
+                <i class="fa fa-envelope fa-stack-1x fa-inverse"></i>
+              </span>
+            </a>
+          </li>
+          
+		      
+          <li>
+            <a href="https://linkedin.com/in/nomikosi/" title="LinkedIn">
+              <span class="fa-stack fa-lg">
+                <i class="fa fa-circle fa-stack-2x"></i>
+                <i class="fa fa-linkedin fa-stack-1x fa-inverse"></i>
+              </span>
+            </a>
+          </li>
+          
+	    	  
+          
+          
+
+    		  <li>
+      			<a href="index.xml" title="RSS">
+      			  <span class="fa-stack fa-lg">
+        				<i class="fa fa-circle fa-stack-2x"></i>
+        				<i class="fa fa-rss fa-stack-1x fa-inverse"></i>
+      			  </span>
+      			</a>
+    		  </li>		
+
+        </ul>
+        <p class="credits copyright text-muted">
+    	  <a href="">Iakovos Nomikos</a> 2019 | <a href="http://gohugo.io">Hugo</a> fueled
+    		  
+    	  
+  	    </p>
+  	    
+    	<p class="credits theme-by text-muted">
+			<a href="https://github.com/5ARMALE/retrofulhugo">Retroful Hugo</a> theme based on <a href="https://github.com/1138-4EB/beautifulhugo">Beautiful Hugo</a>.
+          
+    	</p>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script src="/js/jquery-1.11.2.min.js"></script>
+<script src="/js/bootstrap.min.js"></script>
+<script src="/js/main.js"></script>
+
+
+<script>
+(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'UA-125015105-1', 'auto');
+ga('send', 'pageview');
+</script>
+
+
+
+  </body>
+</html>

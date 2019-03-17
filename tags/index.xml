@@ -41,6 +41,15 @@
     </item>
     
     <item>
+      <title>Camel</title>
+      <link>/tags/camel/</link>
+      <pubDate>Sat, 16 Mar 2019 12:24:14 +0300</pubDate>
+      <author>nomikosi@thefuriousprogrammer.com (Iakovos Nomikos)</author>
+      <guid>/tags/camel/</guid>
+      <description></description>
+    </item>
+    
+    <item>
       <title>Conference</title>
       <link>/tags/conference/</link>
       <pubDate>Fri, 26 Oct 2018 22:24:14 +0300</pubDate>
@@ -70,7 +79,7 @@
     <item>
       <title>Java</title>
       <link>/tags/java/</link>
-      <pubDate>Tue, 13 Nov 2018 20:24:14 +0300</pubDate>
+      <pubDate>Sat, 16 Mar 2019 12:24:14 +0300</pubDate>
       <author>nomikosi@thefuriousprogrammer.com (Iakovos Nomikos)</author>
       <guid>/tags/java/</guid>
       <description></description>
@@ -82,6 +91,24 @@
       <pubDate>Wed, 12 Sep 2018 20:24:14 +0300</pubDate>
       <author>nomikosi@thefuriousprogrammer.com (Iakovos Nomikos)</author>
       <guid>/tags/jcrete/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Library</title>
+      <link>/tags/library/</link>
+      <pubDate>Sat, 16 Mar 2019 12:24:14 +0300</pubDate>
+      <author>nomikosi@thefuriousprogrammer.com (Iakovos Nomikos)</author>
+      <guid>/tags/library/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Open Source</title>
+      <link>/tags/open-source/</link>
+      <pubDate>Sat, 16 Mar 2019 12:24:14 +0300</pubDate>
+      <author>nomikosi@thefuriousprogrammer.com (Iakovos Nomikos)</author>
+      <guid>/tags/open-source/</guid>
       <description></description>
     </item>
     
