@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Closures on </title>
+    <link>/tags/closures/</link>
+    <description>Recent content in Closures on </description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <managingEditor>nomikosi@thefuriousprogrammer.com (Iakovos Nomikos)</managingEditor>
+    <webMaster>nomikosi@thefuriousprogrammer.com (Iakovos Nomikos)</webMaster>
+    <lastBuildDate>Thu, 28 Mar 2019 12:24:14 +0300</lastBuildDate>
+    
+	<atom:link href="/tags/closures/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>JS Closures</title>
+      <link>/post/javascript/closures_in_js/</link>
+      <pubDate>Thu, 28 Mar 2019 12:24:14 +0300</pubDate>
+      <author>nomikosi@thefuriousprogrammer.com (Iakovos Nomikos)</author>
+      <guid>/post/javascript/closures_in_js/</guid>
+      <description>A few years back during a work seminar, I had the opportunity to dive into JS waters and see a bit of its beauty. Up to that point my background was C, C++, Java a bit NodeJS, but I never had the luck to see how functional programming really looks like. For those two months I was mind blown (in a good and bad way see JS &amp;lsquo;==&amp;rsquo; ) since I had discovered a completely new way of programming.</description>
+    </item>
+    
+  </channel>
+</rss>

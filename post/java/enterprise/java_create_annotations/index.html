@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
 
-  <title>JCrete 2018</title>
+  <title>Creating Java annotations</title>
   
   <meta name="author" content="Iakovos Nomikos"/>
   <meta name="generator" content="Hugo 0.40.1" />
@@ -20,9 +20,9 @@
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Fira+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800" />
 
   
-  <meta property="og:title" content="JCrete 2018" />
+  <meta property="og:title" content="Creating Java annotations" />
   <meta property="og:type" content="website" />
-  <meta property="og:url" content="/post/jcrete/jcrete_2018/" />
+  <meta property="og:url" content="/post/java/enterprise/java_create_annotations/" />
   <meta property="og:image" content="/img/fury_logo.png" />
   
 </head>
@@ -89,14 +89,13 @@
   <div class="row">
     <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
       <div class="post-heading">
-        <h1>JCrete 2018</h1>
+        <h1>Creating Java annotations</h1>
         
 
         
-        <span class="post-meta">Posted on September 12, 2018 | Written by Iakovos Nomikos | Tags:  <a href="/tags/jcrete" title="jcrete">
-                jcrete&nbsp; </a>  <a href="/tags/java" title="java">
-                java&nbsp; </a>  <a href="/tags/conference" title="conference">
-                conference&nbsp; </a> 
+        <span class="post-meta">Posted on January 30, 2019 | Written by Iakovos Nomikos | Tags:  <a href="/tags/javascript" title="javascript">
+                javascript&nbsp; </a>  <a href="/tags/under-the-hood" title="under the hood">
+                under the hood&nbsp; </a> 
 
         </span>
         
@@ -114,45 +113,90 @@
   <div class="row">
     <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
       <article role="main" class="blog-post">
-          <p>Last July I had the opportunity to make three of my life dreams come true. First was taking a hike to <a href="http://www.visitgreece.gr/en/nature/lakes/verlinga_or_vringa_dragon_lake" target="_blank">Verliga dragonlake</a> in Pindos, Greece. The second was watching Justice live
-which happened during <a href="https://www.we-are-electric.com/event/2018-weekender/lineup" target="_blank">We Are Electric</a> festival in Holland. The third and most relative to this blog was attending <a href="http://www.jcrete.org/" target="_blank">JCrete</a> unconference.</p>
+          <p>I am pretty sure most of us have used custom annotation in our projects at some point. Today we will go step by step and see how to create our own!
+Annotations in Java are everywhere, from <a href="http://junit.sourceforge.net/javadoc/org/junit/Test.html" target="_blank">@test</a>, <a href="http://junit.sourceforge.net/javadoc/org/junit/BeforeClass.html" target="_blank">@BeforeClass</a>, <a href="http://junit.sourceforge.net/javadoc/org/junit/AfterClass.html" target="_blank">@AfterClass</a> in Junit, <a href="https://docs.oracle.com/javase/8/docs/api/java/lang/Override.html" target="_blank">@Override</a>,<a href="https://docs.oracle.com/javase/8/docs/api/java/lang/Deprecated.html" target="_blank">@Deprecated</a> in Java SE or <a href="https://docs.oracle.com/javaee/6/api/javax/inject/Inject.html" target="_blank">@Inject</a>, <a href="https://docs.oracle.com/javaee/6/api/javax/decorator/Decorator.html" target="_blank">@Decorator</a> in Java EE or <a href="https://docs.oracle.com/javaee/7/api/javax/persistence/Entity.html" target="_blank">@Entity</a> in JPA.</p>
 
-<p>During my 4 year professional experience as a java developer, I have been to many conferences and meetings across Greece. Voxxed <a href="https://voxxeddays.com/athens/" target="_blank">Athens</a> and <a href="https://voxxeddays.com/thessaloniki/" target="_blank">Thessaloniki</a>, <a href="https://www.jhug.gr/" target="_blank">JHug</a>, <a href="https://devitconf.org/" target="_blank">DEVit</a>.
-But among all those an unconference stole my heart. So&hellip; why is that?</p>
+<p>The first step is to declare an interface with @ .The use of @ denotes that our interface will be of annotation type. Now, if we leave it as is and don&rsquo;t add any methods we have a marker annotation.</p>
 
-<p>Well first, the conference is held in the magical island of Crete. The beaches are among the best in the world, the food is delicious and the locals
-are known for their exceptional hospitality. Then you get to meet pioneers of the Java community, with whom you exchange ideas in the most friendly environment
-I have ever seen! In 2018 there where more than 30 Java champions among an estimate of 107 attendees.</p>
+<pre><code>public @interface Furious {
 
-<p>Regarding the unconference structure it goes something like this :</p>
+}
+</code></pre>
 
-<ul>
-<li>pre-session activities such as running and swimming</li>
-<li>breakfast at the <a href="http://www.oac.gr/el/" target="_blank">OAC</a> where the conference is held</li>
-<li>subject voting. Here you can freely propose a subject for discussion and afterwards all unattendees will vote for it.
-In 2018 we had 5 days, 18 sessions each divided within 3 hours. So, for every hour you get 6 different sessions to choose from. How cool is that?</li>
-<li>lunch at the OAC</li>
-<li>post-session activites such as swimming, hiking, random excersions</li>
-<li>rest or hacking at the OAC</li>
-<li>dinner usually in a nearby tavern</li>
-</ul>
+<p>But marker annotation get their own annotation which denote what type of the program they target <b>(@Target)</b> and under which conditions(@Retention). Our previous example can become a bit more complex:</p>
 
-<p>As you might have noticed, the unconference doesn&rsquo;t end within those 3 hours, because you get to socialize with other unattendees the whole day!</p>
+<pre><code>@Retention(RetentionPolicy.RUNTIME)
+@Target(ElementType.TYPE)
+public @interface Furious {
 
-<p>So whats my opinion if you do happen to get an invite? Don&rsquo;t even blink and send accept on the spot! For me its not only about the technical knowledge
-that you acquire but also the people and friends that you make.</p>
+}
+</code></pre>
+
+<p>In our case we marked our annotation as <b>RetentionPolicy.RUNTIME</b> because we want it to be accessed during runtime through reflection. Also <b>ElementType.TYPE</b> denotes that it will only be applied on classes. As described in the <a href="https://docs.oracle.com/javase/8/docs/api/java/lang/annotation/RetentionPolicy.html#SOURCE" target="_blank">Java API</a> here are the possible values for <b>@Retention</b> :</p>
+
+<pre><code>- SOURCE
+public static final RetentionPolicy SOURCE
+Annotations are to be discarded by the compiler.
+
+- CLASS
+public static final RetentionPolicy CLASS
+Annotations are to be recorded in the class file by the compiler but need not be retained by the VM at run time. This is the default behavior.
+
+- RUNTIME
+public static final RetentionPolicy RUNTIMEAnnotations are to be recorded in the class file by the compiler and retained by the VM at run time, so they may be read reflectively.
+</code></pre>
+
+<p>Respectively <a href="https://docs.oracle.com/javase/8/docs/api/java/lang/annotation/ElementType.html#METHOD" target="_blank">here</a> you can find the allowed types for <b>@Target</b>.</p>
+
+<p>Ok so we have created our annotation, if we like we can also add arguments to it:</p>
+
+<pre><code>@Retention(RetentionPolicy.RUNTIME)
+@Target(ElementType.TYPE)
+public @interface Furious {
+  public String name();
+}
+</code></pre>
+
+<p>Now that we are ready lets mark our class with the annotation</p>
+
+<pre><code>@Furious(name = &quot;nomikosi&quot;)
+public class TestClass {
+
+}
+</code></pre>
+
+<p>Of course we don&rsquo;t just mark annotations without a reason, we do want them to serve a purpose. In our case we just want to print something in the console. Of course business logic usually is a lot more complex.</p>
+
+<pre><code>public static void main(String[]args){
+
+     Class clazz = TestClass.class;
+     Annotation[] annotations = clazz.getAnnotations();
+
+     for(Annotation annotation:annotations){
+         if(annotation instanceof Furious){
+             System.out.println(&quot;Dont play with a furious class!!&quot;);
+         }
+
+     }
+
+ }
+</code></pre>
+
+<p>Finally one useful trick, if you like your annotation to be inherited by sub classes mark them with <b>@Inherited</b>.</p>
+
+<p>As additional reference material you can check out <a href="https://docs.oracle.com/javase/7/docs/technotes/guides/language/annotations.html" target="_blank">this</a> and <a href="https://docs.oracle.com/middleware/1221/wls/WLPRG/annotate_dependency.htm#WLPRG257" target="_blank">this</a> guide from Oracle. Code for this sample project can be found <a href="https://github.com/nomikosi/java-annotations" target="_blank">at my repo</a>.</p>
 
       </article>
 
       <ul class="pager blog-pager">
         
         <li class="previous">
-          <a href="/post/other/jms/" data-toggle="tooltip" data-placement="top" title="">&larr; Previous Post</a>
+          <a href="/post/other/loadbalancers/" data-toggle="tooltip" data-placement="top" title="HTTP load balancing">&larr; Previous Post</a>
         </li>
         
         
         <li class="next">
-          <a href="/post/books/dont_make_me_think/" data-toggle="tooltip" data-placement="top" title="&#39;Don&#39;t Make Me Think&#39; book review">Next Post &rarr;</a>
+          <a href="/post/other/camel_spring_boot/" data-toggle="tooltip" data-placement="top" title="Apache camel">Next Post &rarr;</a>
         </li>
         
       </ul>

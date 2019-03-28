@@ -1,0 +1,495 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+
+  <title>JS Closures</title>
+  
+  <meta name="author" content="Iakovos Nomikos"/>
+  <meta name="generator" content="Hugo 0.40.1" />
+  <link href='/img/favicon.ico' rel='icon' type='image/x-icon'/>
+
+  <link rel="alternate" href="/index.xml" type="application/rss+xml" title="">
+
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css" />
+  <link rel="stylesheet" href="/css/bootstrap.css" />
+  <link rel="stylesheet" href="/css/main.css" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Fira+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800" />
+
+  
+  <meta property="og:title" content="JS Closures" />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="/post/javascript/closures_in_js/" />
+  <meta property="og:image" content="/img/fury_logo.png" />
+  
+</head>
+
+
+  <body>
+
+    <nav class="navbar navbar-default navbar-fixed-top navbar-custom">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#main-navbar">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href=""></a>
+    </div>
+
+    <div class="collapse navbar-collapse" id="main-navbar">
+      <ul class="nav navbar-nav navbar-right">
+      
+        
+          <li>
+          <a title="Home" href="/">Home</a>
+  	      </li>
+  	    
+      
+        
+          <li>
+          <a title="About" href="/about/">About</a>
+  	      </li>
+  	    
+      
+      </ul>
+    </div>
+    <div class="avatar-container">
+      <div class="avatar-img-border">
+        
+            <a title="" href="">
+                <img class="avatar-img" src="/img/fury_logo.png" alt="" />
+            </a>
+        
+    </div>
+    	</div>
+	
+
+  </div>
+</nav>
+
+
+    <div role="main" class="container main-content">
+
+      
+
+
+
+  
+
+  <header class="header-section ">
+  
+  <div class="intro-header no-img">
+    <div class="container">
+  <div class="row">
+    <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+      <div class="post-heading">
+        <h1>JS Closures</h1>
+        
+
+        
+        <span class="post-meta">Posted on March 28, 2019 | Written by Iakovos Nomikos | Tags:  <a href="/tags/javascript" title="javascript">
+                javascript&nbsp; </a>  <a href="/tags/under-the-hood" title="under the hood">
+                under the hood&nbsp; </a>  <a href="/tags/closures" title="closures">
+                closures&nbsp; </a> 
+
+        </span>
+        
+      </div>
+    </div>
+  </div>
+</div>
+
+  </div>
+  </header>
+
+
+      
+        <div class="container">
+  <div class="row">
+    <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+      <article role="main" class="blog-post">
+          <p>A few years back during a work seminar, I had the opportunity to dive into JS waters and see a bit of its beauty. Up to that point my background was C, C++, Java a bit NodeJS, but I never had the luck to see how functional programming really looks like. For those two months I was mind blown (in a good and bad way see JS &lsquo;==&rsquo; ) since I had discovered a completely new way of programming. Among the things I really enjoyed was closures. So what closures really are?</p>
+
+<p>According to <a href="https://simple.wikipedia.org/wiki/Closure_(computer_science)" target="_blank">wiki</a>:</p>
+
+<p><code>
+In computer science, a closure is a function that has an environment of
+its own. Inside this environment, there is at least one bound variable.
+Closures were first used in programming languages such as ML and
+Lisp. When a closure is used more than once, the bound variables stay
+the same in between
+</code></p>
+
+<p>Before we understand what that means lets talk about functions&rsquo; <code>lexical scope</code> and global scope. Whatever is enclosed within brackets will be called inner scope and outside the brackets outer scope. Outer scope can extend multiple times in cases of nested functions and until we reach the global scope where everything lives in. For every function call we make, a new inner lexical scope is created with its own variables and its hidden <code>[[Environment]]</code> property (which cannot be accessed) points to the outer scope. Too much to digest so lets start coding!</p>
+
+<h3>Lexical Scope</h3>
+
+<p>Here we have the variable <code>sport</code> declare on the global scope. In this case the <code>[[Environment]]</code> property is null since there is no outer&rsquo;er&rsquo; scope in global scope.</p>
+
+<pre><code>let sport = &quot;basketball&quot;;
+console.log(sport);
+</code></pre>
+
+<p>In the following case function <code>play</code> is called on line 5 and variable <code>sport</code> is passed as an argument. Variable <code>sport</code> now belongs to the lexical/inner scope of function play. <code>[[Environment]]</code> property of <code>play</code> function now points to the global/outer scope and contains the function name and <code>sport</code> variable.</p>
+
+<pre><code>1. let sport = &quot;basketball&quot;;
+2. function play(sport){
+3.  console.log(&quot;I love &quot;+ sport)
+4. }
+5. play(sport);
+---------------------------------
+prints:&quot;I love basketball&quot;
+</code></pre>
+
+<p>Now, assuming that we omit the function&rsquo;s variable this will happen. First, the play function will check its inner scope and will try to find a variable named <code>sport</code>. If a value is not found then it will reach the outer scope and will keep doing so till it reaches the global scope which is one step distance in our case.</p>
+
+<pre><code>let sport = &quot;basketball&quot;;
+
+function play(){
+  console.log(&quot;I love &quot;+ sport)
+}
+play();
+---------------------------------
+prints:&quot;I love basketball&quot;
+</code></pre>
+
+<p>So, we have played with function lets go and see a for loop. Variable &lsquo;i&rsquo; is declared within the for loop scope and thus can not be accessed from outside with console.log() line 5. The internal log will work just fine though!</p>
+
+<pre><code>1. for (let i = 0; i &lt; 10; i++) {
+2.   console.log(i);
+3. }
+4.
+5. console.log(i);
+</code></pre>
+
+<p>Declaring i outside the for loop is a decent workaround</p>
+
+<pre><code>let i = 0
+for (i; i &lt; 10; i++) {
+  console.log(i);
+}
+
+console.log(i);
+</code></pre>
+
+<p><b><i>Now that we have seen the basics of scopes, lets move forward to JS inception aka closures!</i></b></p>
+
+<h3>Closures</h3>
+
+<p>Having in mind what a lexical scope is, lets move forward with closures!</p>
+
+<p>Our first closure will be something like this:</p>
+
+<pre><code>let ball = function () {
+  let ballType = &quot;basketball&quot;;
+
+   let type = function () {
+    return console.log(ballType);
+  };
+  return type;
+}
+
+let foo = ball();
+foo();
+---------------------------------
+prints:&quot;basketball&quot;
+</code></pre>
+
+<p>In the example above we pass control from <code>ball</code> function to <code>type</code> function but please notice that the variable is still accessible. When <code>foo</code> was declared, it created a reference to the inner function <code>type</code> of <code>ball</code>. In other words <code>ball</code> is part of the outer scope of <code>type</code> where <code>ballType</code> is declared and has access to.</p>
+
+<p>Now that we masted beginner&rsquo;s level lets swift gears with the example below. Take a closer look before reading the solution.</p>
+
+<pre><code>1. let walk = 0,run =0;
+2.
+3. let cardio = function(){
+4.  let walkTempo = walk++;
+5.  let runTempo = run++;
+6.  let heartRate = 80
+7.
+8.  var treadmill =  function(){
+9.       var pulse = heartRate++;
+10.      console.log(walkTempo + '  ' + runTempo + '  ' + pulse);
+11.  }
+12.  return treadmill;
+13. }
+14. let legday1 = cardio();
+15. let legday2 = cardio();
+16. let legday3 = cardio();
+17.
+18. legday1();
+19. legday1();
+20. legday2();
+21. legday1();
+22. legday3();
+---------------------------------
+prints:
+&quot;0  0  80&quot;
+&quot;0  0  81&quot;
+&quot;1  1  80&quot;
+&quot;0  0  82&quot;
+&quot;2  2  80&quot;
+</code></pre>
+
+<p>This is how the story goes:</p>
+
+<p>in lines 14..16 we create cardio functions with each one having its own <code>[[Environment]]</code> property. On line 18, we call legday1. Initially, walk and run variables have value zero, heart rate 80 and don&rsquo;t forget, ++ operator applies <u>after</u> the assignment. When we reach the inner function we expect logger to print 0 0 80. At that point something has happened. HeartRate within treadmill has increased by one and has affected its outer scope meaning that on next iteration, pulse will print 81. How about the other two values? If you guessed that they will stay the same you are right! Treadmill affected only the heartRate variable but the global scope of walk and run was affected. So, on line 20 we expect to see that both walk and run tempo have value 1, but as for pulse, a new lexical scope was created with legday2 so we expect to see the default value. The same logic applies for lines 21 and 22. Mind blown ha?
+</br></br></p>
+
+<h3>Loops and Closures</h3>
+
+<p>So far we have discussed about loops and their value scope, we mastered closures, so why not mix those two? I mean&hellip; what could possibly go wrong?</p>
+
+<p>Here we have a palette of colors and we want to filter and store those whose name starts with letter <b>B</b>. Take a look and think what the result will be</p>
+
+<pre><code>var paletteArray = new Array(&quot;Green&quot;,&quot;Black&quot;,&quot;Blue&quot;,&quot;Brown&quot;,&quot;Yellow&quot;,&quot;Pink&quot;);
+var colorsStartWithB = {};
+var j =0;
+
+for(var i = 0;i&lt;paletteArray.length;i++){
+
+  if(paletteArray[i].startsWith(&quot;B&quot;)){   
+      colorsStartWithB[j++] =  function (){
+        return console.log(&quot;My favorite color is: &quot;+ paletteArray[i] +&quot; with number: &quot;+i);    
+      };    
+  }
+}
+for (var i = 0; i &lt; j; i++) {
+    colorsStartWithB[i]();             
+}
+---------------------------------
+prints:
+    &quot;My favorite color is: undefined with number: 6&quot;
+    &quot;My favorite color is: undefined with number: 6&quot;
+    &quot;My favorite color is: undefined with number: 6&quot;
+</code></pre>
+
+<p>So, if we wrote java we would get a glorious ArrayIndexOutOfBoundsException, so cute! How did that happen? Well we depended on outer scope variable <code>i</code> which does 6 for iterations (array length) plus 1 (++) iterations. How can we solve that problem? There are multiple approaches:</p>
+
+<p>1) Create a function responsible for filtering the colors. How will this help us? When we pass an argument to a function it creates a local variable which lives within function&rsquo;s scope.</p>
+
+<p>2) Assign <code>paletteArray[i]</code> to a const or let type of variable. The reason is that in each for loop, separate memory allocation takes place and so the value is not affected.</p>
+
+<p>Lets start with first case, we extracted the console.log to a function with i being its parameter.</p>
+
+<pre><code>var paletteArray = new Array(&quot;Green&quot;,&quot;Black&quot;,&quot;Blue&quot;,&quot;Brown&quot;,&quot;Yellow&quot;,&quot;Pink&quot;);
+var colorsStartWithB = {};
+var j =0;
+
+for(var i = 0;i&lt;paletteArray.length;i++){
+
+  if(paletteArray[i].startsWith(&quot;B&quot;)){     
+      colorsStartWithB[j++] =  favoriteColor(i);
+  }
+}
+
+  function favoriteColor(i){
+        return function(){console.log(&quot;My favorite color is: &quot;+ paletteArray[i] +&quot; with number: &quot;+i); };   
+      };    
+
+for (var i = 0; i &lt; j; i++) {
+    colorsStartWithB[i]();             
+}
+---------------------------------
+prints:
+&quot;My favorite color is: Black with number: 1&quot;
+&quot;My favorite color is: Blue with number:  2&quot;
+&quot;My favorite color is: Brown with number: 3&quot;
+</code></pre>
+
+<p>Solution number 2 looks like this:</p>
+
+<pre><code>var paletteArray = new Array(&quot;Green&quot;,&quot;Black&quot;,&quot;Blue&quot;,&quot;Brown&quot;,&quot;Yellow&quot;,&quot;Pink&quot;);
+var colorsStartWithB = {};
+var j =0;
+
+for(var i = 0;i&lt;paletteArray.length;i++){
+const color = paletteArray[i];
+let position = i;  
+
+  if(color.startsWith(&quot;B&quot;)){   
+     colorsStartWithB[j++] = function (){
+        return console.log(&quot;My favorite color is: &quot;+ color +&quot; with number: &quot;+i);    
+      };    
+
+  }
+}
+for (var i = 0; i &lt; j; i++) {
+    colorsStartWithB[i]();             
+}
+---------------------------------
+prints:
+&quot;My favorite color is: Black with number: 1&quot;
+&quot;My favorite color is: Blue with number:  2&quot;
+&quot;My favorite color is: Brown with number: 3&quot;
+</code></pre>
+
+<p>In the example above can you guess what the output would be if we made color of type var? The output would look like this:</p>
+
+<pre><code>prints:
+&quot;My favorite color is: Pink with number: 1&quot;
+&quot;My favorite color is: Pink with number: 2&quot;
+&quot;My favorite color is: Pink with number: 3&quot;
+</code></pre>
+
+<p>JS is a total mess but a fun mess nevertheless!
+</br></br>
+<h3>Closures and private methods</h3></p>
+
+<p>I guess most people here are familiar with object oriented programming and java in particular. Here we will see how the private method concept can be applied in JS, even though it doesn&rsquo;t have any native support. Lets look at the example below:</p>
+
+<pre><code>let throttle = (function() {
+  let speed = 0;
+  function changeBy(val) {
+    speed += val;
+  }
+  return {
+    accelerate: function() {
+      changeBy(1);
+    },
+    decelerate: function() {
+      changeBy(-1);
+    },
+    value: function() {
+      return speed+&quot;Km/h&quot;;
+    }
+  };
+})();
+
+console.log(throttle.value());
+throttle.accelerate();
+throttle.accelerate();
+console.log(throttle.value());
+throttle.decelerate();
+console.log(throttle.value());
+---------------------------------
+prints:
+&quot;0Km/h&quot;
+&quot;2Km/h&quot;
+&quot;1Km/h&quot;All
+</code></pre>
+
+<p>As you can see we don&rsquo;t have direct access to <code>speed</code> but we can apply all the necessary functions to change and retrieve its value. All three functions share the same lexical scope and thus can affect its value.</p>
+
+<p>If you want to dive a bit more into this subject a good place to start is <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Closures" target="_blank">mozilla developers page</a> and this awesome book <a href="https://www.amazon.com/Secrets-JavaScript-Ninja-John-Resig/dp/1617292850/" target="_blank">Secrets of the JavaScript Ninja</a>.</p>
+
+      </article>
+
+      <ul class="pager blog-pager">
+        
+        <li class="previous">
+          <a href="/post/other/camel_spring_boot/" data-toggle="tooltip" data-placement="top" title="Apache camel">&larr; Previous Post</a>
+        </li>
+        
+        
+      </ul>
+
+      
+
+    </div>
+  </div>
+</div>
+
+      
+
+    </div>
+
+    <footer>
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+        <ul class="list-inline text-center footer-links">
+          
+          
+          <li>
+            <a href="https://github.com/nomikosi" title="GitHub">
+              <span class="fa-stack fa-lg">
+                <i class="fa fa-circle fa-stack-2x"></i>
+                <i class="fa fa-github fa-stack-1x fa-inverse"></i>
+              </span>
+            </a>
+          </li>
+          
+		      
+          <li>
+            <a href="https://twitter.com/nomikosi" title="Twitter">
+              <span class="fa-stack fa-lg">
+                <i class="fa fa-circle fa-stack-2x"></i>
+                <i class="fa fa-twitter fa-stack-1x fa-inverse"></i>
+              </span>
+            </a>
+          </li>
+          
+		      
+          <li>
+            <a href="mailto:nomikosi@thefuriousprogrammer.com" title="Email me">
+              <span class="fa-stack fa-lg">
+                <i class="fa fa-circle fa-stack-2x"></i>
+                <i class="fa fa-envelope fa-stack-1x fa-inverse"></i>
+              </span>
+            </a>
+          </li>
+          
+		      
+          <li>
+            <a href="https://linkedin.com/in/nomikosi/" title="LinkedIn">
+              <span class="fa-stack fa-lg">
+                <i class="fa fa-circle fa-stack-2x"></i>
+                <i class="fa fa-linkedin fa-stack-1x fa-inverse"></i>
+              </span>
+            </a>
+          </li>
+          
+	    	  
+          
+          
+
+    		  <li>
+      			<a href="index.xml" title="RSS">
+      			  <span class="fa-stack fa-lg">
+        				<i class="fa fa-circle fa-stack-2x"></i>
+        				<i class="fa fa-rss fa-stack-1x fa-inverse"></i>
+      			  </span>
+      			</a>
+    		  </li>		
+
+        </ul>
+        <p class="credits copyright text-muted">
+    	  <a href="">Iakovos Nomikos</a> 2019 | <a href="http://gohugo.io">Hugo</a> fueled
+    		  
+    	  
+  	    </p>
+  	    
+    	<p class="credits theme-by text-muted">
+			<a href="https://github.com/5ARMALE/retrofulhugo">Retroful Hugo</a> theme based on <a href="https://github.com/1138-4EB/beautifulhugo">Beautiful Hugo</a>.
+          
+    	</p>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script src="/js/jquery-1.11.2.min.js"></script>
+<script src="/js/bootstrap.min.js"></script>
+<script src="/js/main.js"></script>
+
+
+<script>
+(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'UA-125015105-1', 'auto');
+ga('send', 'pageview');
+</script>
+
+
+
+  </body>
+</html>

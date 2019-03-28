@@ -1,16 +1,16 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Under the Hood on </title>
-    <link>/tags/under-the-hood/</link>
-    <description>Recent content in Under the Hood on </description>
+    <title>Javascript on </title>
+    <link>/tags/javascript/</link>
+    <description>Recent content in Javascript on </description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <managingEditor>nomikosi@thefuriousprogrammer.com (Iakovos Nomikos)</managingEditor>
     <webMaster>nomikosi@thefuriousprogrammer.com (Iakovos Nomikos)</webMaster>
     <lastBuildDate>Thu, 28 Mar 2019 12:24:14 +0300</lastBuildDate>
     
-	<atom:link href="/tags/under-the-hood/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="/tags/javascript/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
@@ -30,15 +30,6 @@
       <guid>/post/java/enterprise/java_create_annotations/</guid>
       <description>I am pretty sure most of us have used custom annotation in our projects at some point. Today we will go step by step and see how to create our own! Annotations in Java are everywhere, from @test, @BeforeClass, @AfterClass in Junit, @Override,@Deprecated in Java SE or @Inject, @Decorator in Java EE or @Entity in JPA.
 The first step is to declare an interface with @ .The use of @ denotes that our interface will be of annotation type.</description>
-    </item>
-    
-    <item>
-      <title>HTTP load balancing</title>
-      <link>/post/other/loadbalancers/</link>
-      <pubDate>Tue, 25 Dec 2018 19:24:14 +0300</pubDate>
-      <author>nomikosi@thefuriousprogrammer.com (Iakovos Nomikos)</author>
-      <guid>/post/other/loadbalancers/</guid>
-      <description>When you hear the term load balancing, this can refer to many different things such as routers, TCP, UDP or http requests. Today we gonna discuss about the latter. Load balancing for http requests is the process of forwarding traffic as evenly as possible among instances of your server pool. Have in mind that your machines may vary in size, load or geographic region even so that&amp;rsquo;s not an easy task!</description>
     </item>
     
   </channel>

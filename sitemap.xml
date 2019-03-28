@@ -3,8 +3,18 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
+    <loc>/post/javascript/closures_in_js/</loc>
+    <lastmod>2019-03-28T12:24:14+03:00</lastmod>
+  </url>
+  
+  <url>
     <loc>/post/other/camel_spring_boot/</loc>
     <lastmod>2019-03-16T12:24:14+03:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/post/java/enterprise/java_create_annotations/</loc>
+    <lastmod>2019-01-30T12:24:14+03:00</lastmod>
   </url>
   
   <url>
@@ -49,12 +59,16 @@
   
   <url>
     <loc>/</loc>
-    <lastmod>2019-03-16T12:24:14+03:00</lastmod>
+    <lastmod>2019-03-28T12:24:14+03:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
     <loc>/about/</loc>
+  </url>
+  
+  <url>
+    <loc>/post/other/jms/</loc>
   </url>
   
   <url>
@@ -87,6 +101,12 @@
   </url>
   
   <url>
+    <loc>/tags/closures/</loc>
+    <lastmod>2019-03-28T12:24:14+03:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
     <loc>/tags/conference/</loc>
     <lastmod>2018-10-26T22:24:14+03:00</lastmod>
     <priority>0</priority>
@@ -111,6 +131,12 @@
   </url>
   
   <url>
+    <loc>/tags/javascript/</loc>
+    <lastmod>2019-03-28T12:24:14+03:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
     <loc>/tags/jcrete/</loc>
     <lastmod>2018-09-12T20:24:14+03:00</lastmod>
     <priority>0</priority>
@@ -130,7 +156,7 @@
   
   <url>
     <loc>/post/</loc>
-    <lastmod>2019-03-16T12:24:14+03:00</lastmod>
+    <lastmod>2019-03-28T12:24:14+03:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -154,7 +180,7 @@
   
   <url>
     <loc>/tags/under-the-hood/</loc>
-    <lastmod>2018-12-25T19:24:14+03:00</lastmod>
+    <lastmod>2019-03-28T12:24:14+03:00</lastmod>
     <priority>0</priority>
   </url>
   

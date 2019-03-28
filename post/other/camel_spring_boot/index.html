@@ -122,7 +122,7 @@
 <ul>
 <li>First we read from a specific topic. </br></li>
 <li>Then we log and direct our call to another route where we will get our server token. This route is omitted for now</br></li>
-<li>With the use of .bean simply we call the specified bean&rsquo;s method, in that case getUnsentMessages</br></li>
+<li>With the use of .bean simply we call the specified bean&rsquo;s method, in that case <code>getUnsentMessages</code></br></li>
 <li>Split command is used in cases where bean method <code>getUnsentMessages</code> returns a List of results and we only want to perform REST calls for each one individually.</br></li>
 <li>Directs the output.</li>
 </ul>
@@ -160,7 +160,7 @@
 14.				.simple(&quot;Bearer ${header.TOKEN}&quot;) 	
 </code></pre>
 
-<p>15..30 In those lines we try to determine the messages type and corresponding URL.</p>
+<p>15..30 In those lines we try to determine the messages type and corresponding URL. One thing to have in mind is that the URLs where in <a href="http://camel.apache.org/http4.html" target="_blank">http4 format</a>. Also a cool trick to use when playing with http status is to use the parameter <code>?throwExceptionOnFailure=false</code> in the URL. By default when you make a call and receive anything but 100&hellip;299 response code <a href="http://camel.apache.org/http" target="_blank">an exception will be thrown</a> which is not what I wanted.</p>
 
 <pre><code>15.			.process(new Processor() {
 16.				@Override
@@ -211,9 +211,13 @@
       <ul class="pager blog-pager">
         
         <li class="previous">
-          <a href="/post/other/loadbalancers/" data-toggle="tooltip" data-placement="top" title="HTTP load balancing">&larr; Previous Post</a>
+          <a href="/post/java/enterprise/java_create_annotations/" data-toggle="tooltip" data-placement="top" title="Creating Java annotations">&larr; Previous Post</a>
         </li>
         
+        
+        <li class="next">
+          <a href="/post/javascript/closures_in_js/" data-toggle="tooltip" data-placement="top" title="JS Closures">Next Post &rarr;</a>
+        </li>
         
       </ul>
 
