@@ -23,6 +23,16 @@
     </item>
     
     <item>
+      <title>Creating Java annotations</title>
+      <link>/post/java/enterprise/java_create_annotations/</link>
+      <pubDate>Wed, 30 Jan 2019 12:24:14 +0300</pubDate>
+      <author>nomikosi@thefuriousprogrammer.com (Iakovos Nomikos)</author>
+      <guid>/post/java/enterprise/java_create_annotations/</guid>
+      <description>I am pretty sure most of us have used custom annotation in our projects at some point. Today we will go step by step and see how to create our own! Annotations in Java are everywhere, from @test, @BeforeClass, @AfterClass in Junit, @Override,@Deprecated in Java SE or @Inject, @Decorator in Java EE or @Entity in JPA.
+The first step is to declare an interface with @ .The use of @ denotes that our interface will be of annotation type.</description>
+    </item>
+    
+    <item>
       <title>JShell</title>
       <link>/post/java/java_9/jshell/</link>
       <pubDate>Tue, 13 Nov 2018 20:24:14 +0300</pubDate>
